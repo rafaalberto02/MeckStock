@@ -1,5 +1,7 @@
 package com.mecindustries.meckstock.model;
 
+import com.mecindustries.meckstock.model.Enum.NivelPermissao;
+
 /**
  *
  * @author Fael
@@ -7,14 +9,16 @@ package com.mecindustries.meckstock.model;
 public class Usuario {
 
     private int id;
+    private String nome;
     private String login;
     private String senha;
     private String telefone;
     private String email;
-    private int nivelPermissao;
+    private NivelPermissao nivelPermissao;
 
-    public Usuario(int id, String login, String senha, String telefone, String email, int nivelPermissao) {
+    public Usuario(int id, String nome, String login, String senha, String telefone, String email, NivelPermissao nivelPermissao) {
         this.id = id;
+        this.nome = nome;
         this.login = login;
         this.senha = senha;
         this.telefone = telefone;
@@ -22,7 +26,8 @@ public class Usuario {
         this.nivelPermissao = nivelPermissao;
     }
 
-    public Usuario(String login, String senha, String telefone, String email, int nivelPermissao) {
+    public Usuario(String nome, String login, String senha, String telefone, String email, NivelPermissao nivelPermissao) {
+        this.nome = nome;
         this.login = login;
         this.senha = senha;
         this.telefone = telefone;
@@ -78,12 +83,20 @@ public class Usuario {
         this.email = email;
     }
 
-    public int getNivelPermissao() {
+    public NivelPermissao getNivelPermissao() {
         return nivelPermissao;
     }
 
-    public void setNivelPermissao(int nivelPermissao) {
+    public void setNivelPermissao(NivelPermissao nivelPermissao) {
         this.nivelPermissao = nivelPermissao;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     @Override

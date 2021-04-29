@@ -10,14 +10,24 @@ public enum Estado {
     USADO(2),
     DANIFICADO(3);
 
-    private int value;
+    private final int value;
 
     private Estado(int value) {
         this.value = value;
     }
 
     public int Value() {
-        return value;
+        return this.value;
+    }
+
+    public static Estado getByField(int field) {
+        for (Estado estado : Estado.values()) {
+            if (field == estado.Value()) {
+                return estado;
+            }
+        }
+
+        return null;
     }
 
 }

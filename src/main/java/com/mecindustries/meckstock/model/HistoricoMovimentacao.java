@@ -9,22 +9,25 @@ import java.time.LocalDateTime;
 public class HistoricoMovimentacao {
 
     private int id;
-    private int idFuncionario;
+    private int idUsuario;
     private int idSetor;
+    private int idItem;
     private LocalDateTime dataRetirada;
     private LocalDateTime dataDevolucao;
 
-    public HistoricoMovimentacao(int id, int idFuncionario, int idSetor, LocalDateTime dataRetirada, LocalDateTime dataDevolucao) {
+    public HistoricoMovimentacao(int id, int idUsuario, int idSetor, int idItem, LocalDateTime dataRetirada, LocalDateTime dataDevolucao) {
         this.id = id;
-        this.idFuncionario = idFuncionario;
+        this.idUsuario = idUsuario;
         this.idSetor = idSetor;
+        this.idItem = idItem;
         this.dataRetirada = dataRetirada;
         this.dataDevolucao = dataDevolucao;
     }
 
-    public HistoricoMovimentacao(int idFuncionario, int idSetor, LocalDateTime dataRetirada, LocalDateTime dataDevolucao) {
-        this.idFuncionario = idFuncionario;
+    public HistoricoMovimentacao(int idUsuario, int idSetor, int idItem, LocalDateTime dataRetirada, LocalDateTime dataDevolucao) {
+        this.idUsuario = idUsuario;
         this.idSetor = idSetor;
+        this.idItem = idItem;
         this.dataRetirada = dataRetirada;
         this.dataDevolucao = dataDevolucao;
     }
@@ -40,12 +43,12 @@ public class HistoricoMovimentacao {
         this.id = id;
     }
 
-    public int getIdFuncionario() {
-        return idFuncionario;
+    public int getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setIdFuncionario(int idFuncionario) {
-        this.idFuncionario = idFuncionario;
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     public int getIdSetor() {
@@ -54,6 +57,14 @@ public class HistoricoMovimentacao {
 
     public void setIdSetor(int idSetor) {
         this.idSetor = idSetor;
+    }
+
+    public int getIdItem() {
+        return idItem;
+    }
+
+    public void setIdItem(int idItem) {
+        this.idItem = idItem;
     }
 
     public LocalDateTime getDataRetirada() {
@@ -96,7 +107,7 @@ public class HistoricoMovimentacao {
 
     @Override
     public String toString() {
-        return "HistoricoMovimentacao{" + "id=" + id + ", idFuncionario=" + idFuncionario + ", idSetor=" + idSetor + ", dataRetirada=" + dataRetirada + ", dataDevolucao=" + dataDevolucao + '}';
+        return "HistoricoMovimentacao{" + "id=" + id + ", idUsuario=" + idUsuario + ", idSetor=" + idSetor + ", dataRetirada=" + dataRetirada + ", dataDevolucao=" + dataDevolucao + '}';
     }
 
 }
