@@ -1,5 +1,6 @@
 package com.mecindustries.meckstock.view;
 
+import com.mecindustries.meckstock.controller.UsuarioController;
 import java.awt.EventQueue;
 
 /**
@@ -22,7 +23,7 @@ public class LoginFrame extends javax.swing.JFrame {
         loginTextField = new javax.swing.JTextField();
         passwordFieldPanel = new javax.swing.JPanel();
         passwordLabel = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        passwordTextField = new javax.swing.JPasswordField();
         buttonsPanel = new javax.swing.JPanel();
         loginButton = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
@@ -35,7 +36,6 @@ public class LoginFrame extends javax.swing.JFrame {
         setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
         setName("LoginFrame"); // NOI18N
-        setPreferredSize(new java.awt.Dimension(800, 600));
         setResizable(false);
         setSize(new java.awt.Dimension(800, 600));
 
@@ -70,8 +70,8 @@ public class LoginFrame extends javax.swing.JFrame {
         passwordLabel.setText("Senha");
         passwordLabel.setToolTipText("Digite seu login para entrar no sistema");
 
-        jPasswordField1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jPasswordField1.setBorder(null);
+        passwordTextField.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        passwordTextField.setBorder(null);
 
         javax.swing.GroupLayout passwordFieldPanelLayout = new javax.swing.GroupLayout(passwordFieldPanel);
         passwordFieldPanel.setLayout(passwordFieldPanelLayout);
@@ -80,7 +80,7 @@ public class LoginFrame extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, passwordFieldPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(passwordFieldPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPasswordField1)
+                    .addComponent(passwordTextField)
                     .addComponent(passwordLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -90,7 +90,7 @@ public class LoginFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(passwordLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                .addComponent(passwordTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -125,6 +125,11 @@ public class LoginFrame extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jButton1.setText("Cancelar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout buttonsPanelLayout = new javax.swing.GroupLayout(buttonsPanel);
         buttonsPanel.setLayout(buttonsPanelLayout);
@@ -153,6 +158,7 @@ public class LoginFrame extends javax.swing.JFrame {
 
         menuBarPrincipal.setBackground(java.awt.Color.white);
         menuBarPrincipal.setForeground(java.awt.Color.black);
+        menuBarPrincipal.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
         menuItemAbout.setText("Sobre");
         menuItemAbout.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -192,8 +198,12 @@ public class LoginFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-
+        System.out.println(UsuarioController.makeLogin(this.loginTextField.getText(), String.valueOf(this.passwordTextField.getPassword())));
     }//GEN-LAST:event_loginButtonActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public static void main(String args[]) {
         EventQueue.invokeLater(() -> {
@@ -206,7 +216,6 @@ public class LoginFrame extends javax.swing.JFrame {
     private javax.swing.JPanel fieldsPanel;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JButton loginButton;
     private javax.swing.JPanel loginFieldPanel;
     private javax.swing.JLabel loginLabel;
@@ -215,5 +224,6 @@ public class LoginFrame extends javax.swing.JFrame {
     private javax.swing.JMenu menuItemAbout;
     private javax.swing.JPanel passwordFieldPanel;
     private javax.swing.JLabel passwordLabel;
+    private javax.swing.JPasswordField passwordTextField;
     // End of variables declaration//GEN-END:variables
 }
