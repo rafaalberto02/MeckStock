@@ -162,6 +162,16 @@ public class LoginFrame extends javax.swing.JFrame {
 
         menuItemAbout.setText("Sobre");
         menuItemAbout.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        menuItemAbout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuItemAboutMouseClicked(evt);
+            }
+        });
+        menuItemAbout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemAboutActionPerformed(evt);
+            }
+        });
         menuBarPrincipal.add(menuItemAbout);
 
         setJMenuBar(menuBarPrincipal);
@@ -204,6 +214,16 @@ public class LoginFrame extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void menuItemAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemAboutActionPerformed
+        System.out.println("aa");
+        new AboutFrame().setVisible(true);
+    }//GEN-LAST:event_menuItemAboutActionPerformed
+
+    private void menuItemAboutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuItemAboutMouseClicked
+
+        new AboutFrame().setVisible(true);
+    }//GEN-LAST:event_menuItemAboutMouseClicked
 
     public static void main(String args[]) {
         EventQueue.invokeLater(() -> {
