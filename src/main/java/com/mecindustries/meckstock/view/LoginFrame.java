@@ -1,7 +1,10 @@
 package com.mecindustries.meckstock.view;
 
 import com.mecindustries.meckstock.controller.UsuarioController;
+import com.mecindustries.meckstock.model.Usuario;
+
 import java.awt.EventQueue;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -167,11 +170,6 @@ public class LoginFrame extends javax.swing.JFrame {
                 menuItemAboutMouseClicked(evt);
             }
         });
-        menuItemAbout.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemAboutActionPerformed(evt);
-            }
-        });
         menuBarPrincipal.add(menuItemAbout);
 
         setJMenuBar(menuBarPrincipal);
@@ -208,20 +206,20 @@ public class LoginFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        System.out.println(UsuarioController.makeLogin(this.loginTextField.getText(), String.valueOf(this.passwordTextField.getPassword())));
+        Usuario loggedUser = (UsuarioController.makeLogin(this.loginTextField.getText(), String.valueOf(this.passwordTextField.getPassword())));
+        if (loggedUser != null) {
+            new PrincipalFrame(loggedUser).setVisible(true);
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "Login e/ou senha incorretos");
+        }
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void menuItemAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemAboutActionPerformed
-        System.out.println("aa");
-        new AboutFrame().setVisible(true);
-    }//GEN-LAST:event_menuItemAboutActionPerformed
-
     private void menuItemAboutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuItemAboutMouseClicked
-
         new AboutFrame().setVisible(true);
     }//GEN-LAST:event_menuItemAboutMouseClicked
 
