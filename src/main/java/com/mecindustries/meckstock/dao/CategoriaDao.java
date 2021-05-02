@@ -6,6 +6,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -51,6 +53,9 @@ public class CategoriaDao {
                 categoriaToReturn = createCategoriaObjectByResultSet(rs);
             }
 
+            stmt.close();
+            connection.close();
+
         } catch (SQLException e) {
             System.err.println(e);
         } finally {
@@ -78,6 +83,30 @@ public class CategoriaDao {
             return false;
         }
 
+    }
+
+    public static List<Categoria> getAll() {
+        List<Categoria> categorias = new ArrayList();
+
+        Connection connection = ConnectionFactory.getConnection();
+
+        String sqlQuery = "SELECT * FROM CATEGORIA";
+
+        try (PreparedStatement stmt = connection.prepareStatement(sqlQuery)) {
+
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                categorias.add(createCategoriaObjectByResultSet(rs));
+            }
+
+            stmt.close();
+            connection.close();
+        } catch (SQLException e) {
+            System.err.println(e);
+        } finally {
+            return categorias;
+        }
     }
 
     private static Categoria createCategoriaObjectByResultSet(ResultSet rs) throws SQLException {
