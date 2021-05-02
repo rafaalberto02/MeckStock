@@ -71,6 +71,7 @@ public class PatrimonioDao {
 
             stmt.setInt(1, patrimonio.getIdCategoria());
             stmt.setString(2, patrimonio.getNome());
+            stmt.setInt(3, patrimonio.getId());
 
             stmt.execute();
 

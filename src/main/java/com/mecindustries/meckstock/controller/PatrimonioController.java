@@ -17,4 +17,8 @@ public class PatrimonioController {
         return PatrimonioDao.searchById(id);
     }
 
+    public static boolean update(Patrimonio patrimnonioToEdit) {
+        return PatrimonioDao.Update(patrimnonioToEdit);
+    }
+
 }

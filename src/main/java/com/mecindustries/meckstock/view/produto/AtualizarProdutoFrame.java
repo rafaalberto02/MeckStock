@@ -11,11 +11,12 @@ import javax.swing.JOptionPane;
  *
  * @author Fael
  */
-public class PesquisarProdutoFrame extends javax.swing.JFrame {
+public class AtualizarProdutoFrame extends javax.swing.JFrame {
 
     private List<Categoria> categorias;
+    private Patrimonio patrimonio;
 
-    public PesquisarProdutoFrame() {
+    public AtualizarProdutoFrame() {
         initComponents();
         categoriaBoxInitializer();
     }
@@ -36,6 +37,7 @@ public class PesquisarProdutoFrame extends javax.swing.JFrame {
         panelNome = new javax.swing.JPanel();
         labelNome = new javax.swing.JLabel();
         textFieldName = new javax.swing.JTextField();
+        buttonVoltar = new javax.swing.JButton();
         panelCategoria = new javax.swing.JPanel();
         labelCategoria = new javax.swing.JLabel();
         comboBoxCategory = new javax.swing.JComboBox<>();
@@ -46,7 +48,7 @@ public class PesquisarProdutoFrame extends javax.swing.JFrame {
         panelQuantidade = new javax.swing.JPanel();
         labelQuantidade = new javax.swing.JLabel();
         textFieldQuantidade = new javax.swing.JTextField();
-        buttonVoltar = new javax.swing.JButton();
+        buttonSalvar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastrar Produto");
@@ -59,7 +61,6 @@ public class PesquisarProdutoFrame extends javax.swing.JFrame {
         labelNome.setText("Nome:");
 
         textFieldName.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        textFieldName.setEnabled(false);
 
         javax.swing.GroupLayout panelNomeLayout = new javax.swing.GroupLayout(panelNome);
         panelNome.setLayout(panelNomeLayout);
@@ -82,11 +83,18 @@ public class PesquisarProdutoFrame extends javax.swing.JFrame {
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
+        buttonVoltar.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        buttonVoltar.setText("Voltar");
+        buttonVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonVoltarActionPerformed(evt);
+            }
+        });
+
         labelCategoria.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         labelCategoria.setText("Categoria:");
 
         comboBoxCategory.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        comboBoxCategory.setEnabled(false);
 
         javax.swing.GroupLayout panelCategoriaLayout = new javax.swing.GroupLayout(panelCategoria);
         panelCategoria.setLayout(panelCategoriaLayout);
@@ -150,8 +158,6 @@ public class PesquisarProdutoFrame extends javax.swing.JFrame {
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
-        buttonPesquisar.getAccessibleContext().setAccessibleName("buttonSearchId");
-
         labelQuantidade.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         labelQuantidade.setText("Quantidade:");
 
@@ -179,11 +185,11 @@ public class PesquisarProdutoFrame extends javax.swing.JFrame {
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        buttonVoltar.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        buttonVoltar.setText("Voltar");
-        buttonVoltar.addActionListener(new java.awt.event.ActionListener() {
+        buttonSalvar.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        buttonSalvar.setText("Salvar");
+        buttonSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonVoltarActionPerformed(evt);
+                buttonSalvarActionPerformed(evt);
             }
         });
 
@@ -191,41 +197,48 @@ public class PesquisarProdutoFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(410, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(215, 215, 215)
-                        .addComponent(buttonVoltar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(labelLogo))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(panelCategoria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(panelNome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(panelId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(panelQuantidade, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 331, Short.MAX_VALUE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(376, Short.MAX_VALUE)
+                .addComponent(buttonSalvar)
+                .addGap(320, 320, 320)
+                .addComponent(buttonVoltar)
+                .addGap(281, 281, 281)
+                .addComponent(labelLogo)
                 .addContainerGap())
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(373, 373, 373)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(panelCategoria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(panelNome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(panelId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(panelQuantidade, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addContainerGap(374, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(97, 97, 97)
-                .addComponent(panelId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(panelCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(panelNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(panelQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 161, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(604, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(buttonVoltar)
-                        .addGap(51, 51, 51)))
-                .addContainerGap())
+                        .addComponent(labelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(buttonVoltar)
+                            .addComponent(buttonSalvar))
+                        .addGap(82, 82, 82))))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(75, 75, 75)
+                    .addComponent(panelId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(18, 18, 18)
+                    .addComponent(panelCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(18, 18, 18)
+                    .addComponent(panelNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(18, 18, 18)
+                    .addComponent(panelQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(271, Short.MAX_VALUE)))
         );
 
         pack();
@@ -240,10 +253,10 @@ public class PesquisarProdutoFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_textFieldIdKeyTyped
 
     private void buttonPesquisarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonPesquisarMouseClicked
-        Patrimonio patrimonio = PatrimonioController.searchById(Integer.valueOf(textFieldId.getText()));
+        this.patrimonio = PatrimonioController.searchById(Integer.valueOf(textFieldId.getText()));
 
-        if (patrimonio != null) {
-            patchValues(patrimonio);
+        if (this.patrimonio != null) {
+            patchValues(this.patrimonio);
         } else {
             JOptionPane.showMessageDialog(null, "Patrimônio não encontrado");
         }
@@ -253,14 +266,30 @@ public class PesquisarProdutoFrame extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_buttonVoltarActionPerformed
 
+    private void buttonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalvarActionPerformed
+        Patrimonio patrimonioToEdit = new Patrimonio(
+                this.patrimonio.getId(),
+                this.categorias.get(comboBoxCategory.getSelectedIndex()).getId(),
+                textFieldName.getText(),
+                this.patrimonio.getQuantidade()
+        );
+
+        if (PatrimonioController.update(patrimonioToEdit)) {
+            JOptionPane.showMessageDialog(null, "Patrimônio atualizado com sucesso");
+        } else {
+            JOptionPane.showMessageDialog(null, "Ocorreu um erro ao atualizar patrimonio");
+        }
+    }//GEN-LAST:event_buttonSalvarActionPerformed
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
-            new PesquisarProdutoFrame().setVisible(true);
+            new AtualizarProdutoFrame().setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonPesquisar;
+    private javax.swing.JButton buttonSalvar;
     private javax.swing.JButton buttonVoltar;
     private javax.swing.JComboBox<String> comboBoxCategory;
     private javax.swing.JLabel labelCategoria;

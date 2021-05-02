@@ -1,6 +1,7 @@
 package com.mecindustries.meckstock.view;
 
 import com.mecindustries.meckstock.model.Usuario;
+import com.mecindustries.meckstock.view.produto.AtualizarProdutoFrame;
 import com.mecindustries.meckstock.view.produto.CadastrarProdutoFrame;
 import com.mecindustries.meckstock.view.produto.PesquisarProdutoFrame;
 
@@ -9,16 +10,16 @@ import com.mecindustries.meckstock.view.produto.PesquisarProdutoFrame;
  * @author Fael
  */
 public class PrincipalFrame extends javax.swing.JFrame {
-
+    
     public PrincipalFrame() {
         initComponents();
     }
-
+    
     public PrincipalFrame(Usuario usuario) {
         initComponents();
         labelBemVindo.setText("Bem vindo, " + usuario.getNome());
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -81,6 +82,11 @@ public class PrincipalFrame extends javax.swing.JFrame {
         menuProduto.add(menuItemReadProduto);
 
         menuItemUpdateProduto.setText("Atualizar");
+        menuItemUpdateProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemUpdateProdutoActionPerformed(evt);
+            }
+        });
         menuProduto.add(menuItemUpdateProduto);
 
         menuItemDeleteProduto.setText("Deletar");
@@ -171,6 +177,10 @@ public class PrincipalFrame extends javax.swing.JFrame {
         new PesquisarProdutoFrame().setVisible(true);
     }//GEN-LAST:event_menuItemReadProdutoActionPerformed
 
+    private void menuItemUpdateProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemUpdateProdutoActionPerformed
+        new AtualizarProdutoFrame().setVisible(true);
+    }//GEN-LAST:event_menuItemUpdateProdutoActionPerformed
+    
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
             new PrincipalFrame().setVisible(true);
