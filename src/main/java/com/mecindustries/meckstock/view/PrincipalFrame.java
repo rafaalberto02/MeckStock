@@ -1,29 +1,33 @@
 package com.mecindustries.meckstock.view;
 
 import com.mecindustries.meckstock.model.Usuario;
+import com.mecindustries.meckstock.view.produto.CadastrarProdutoFrame;
 
 /**
  *
  * @author Fael
  */
 public class PrincipalFrame extends javax.swing.JFrame {
-
+    
     public PrincipalFrame() {
         initComponents();
     }
     
-    public PrincipalFrame(Usuario usuario){
+    public PrincipalFrame(Usuario usuario) {
         initComponents();
+        labelBemVindo.setText("Bem vindo, " + usuario.getNome());
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         labelLogo = new javax.swing.JLabel();
+        labelBemVindo = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         menuProduto = new javax.swing.JMenu();
         menuItemCreateProduto = new javax.swing.JMenuItem();
+        menuItemCreateProdutoCategoria = new javax.swing.JMenuItem();
         menuItemReadProduto = new javax.swing.JMenuItem();
         menuItemUpdateProduto = new javax.swing.JMenuItem();
         menuItemDeleteProduto = new javax.swing.JMenuItem();
@@ -47,13 +51,25 @@ public class PrincipalFrame extends javax.swing.JFrame {
         labelLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/LogoMeckStock.png"))); // NOI18N
 
+        labelBemVindo.setBackground(java.awt.Color.white);
+        labelBemVindo.setFont(new java.awt.Font("Arial", 1, 30)); // NOI18N
+        labelBemVindo.setForeground(java.awt.Color.black);
+
         menuBar.setForeground(java.awt.Color.white);
         menuBar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
         menuProduto.setText("Produto");
+        menuProduto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuProdutoMouseClicked(evt);
+            }
+        });
 
         menuItemCreateProduto.setText("Cadastrar");
         menuProduto.add(menuItemCreateProduto);
+
+        menuItemCreateProdutoCategoria.setText("Cadastrar Categoria");
+        menuProduto.add(menuItemCreateProdutoCategoria);
 
         menuItemReadProduto.setText("Pesquisar");
         menuProduto.add(menuItemReadProduto);
@@ -104,27 +120,31 @@ public class PrincipalFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1280, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(labelLogo)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelBemVindo))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 697, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(labelLogo)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(214, Short.MAX_VALUE)
+                .addComponent(labelBemVindo)
+                .addGap(18, 18, 18)
+                .addComponent(labelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(254, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void menuProdutoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuProdutoMouseClicked
+        new CadastrarProdutoFrame().setVisible(true);
+    }//GEN-LAST:event_menuProdutoMouseClicked
+    
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
             new PrincipalFrame().setVisible(true);
@@ -132,10 +152,12 @@ public class PrincipalFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel labelBemVindo;
     private javax.swing.JLabel labelLogo;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem menuItemCreateMovimentacao;
     private javax.swing.JMenuItem menuItemCreateProduto;
+    private javax.swing.JMenuItem menuItemCreateProdutoCategoria;
     private javax.swing.JMenuItem menuItemCreateSetor;
     private javax.swing.JMenuItem menuItemDeleteMovimentacao;
     private javax.swing.JMenuItem menuItemDeleteProduto;
