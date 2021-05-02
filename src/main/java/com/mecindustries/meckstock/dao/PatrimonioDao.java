@@ -48,6 +48,7 @@ public class PatrimonioDao {
             stmt.setInt(1, id);
 
             ResultSet rs = stmt.executeQuery();
+            System.out.println(id);
 
             if (rs.next()) {
                 patrimonioToReturn = createPatrimonioObjectByResultSet(rs);

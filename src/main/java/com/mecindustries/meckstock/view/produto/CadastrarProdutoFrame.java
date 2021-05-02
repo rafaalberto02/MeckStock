@@ -12,22 +12,22 @@ import javax.swing.JOptionPane;
  * @author Fael
  */
 public class CadastrarProdutoFrame extends javax.swing.JFrame {
-
+    
     private List<Categoria> categorias;
-
+    
     public CadastrarProdutoFrame() {
         initComponents();
         categoriaBoxInitializer();
     }
-
+    
     private void categoriaBoxInitializer() {
         this.categorias = CategoriaDao.getAll();
-
+        
         this.categorias.forEach(categoria -> {
             comboBoxCategory.addItem(categoria.getNome());
         });
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -182,15 +182,16 @@ public class CadastrarProdutoFrame extends javax.swing.JFrame {
                 textFieldName.getText(),
                 0
         );
-
+        
         if (PatrimonioController.create(patrimonio)) {
             JOptionPane.showMessageDialog(null, "Patrimônio adicionado com sucesso");
+            clean();
         } else {
             JOptionPane.showMessageDialog(null, "Ocorreu um erro ao adicionar patrimonio");
         }
 
     }//GEN-LAST:event_buttonCreateMouseClicked
-
+    
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
             new CadastrarProdutoFrame().setVisible(true);
@@ -209,4 +210,9 @@ public class CadastrarProdutoFrame extends javax.swing.JFrame {
     private javax.swing.JPanel panelNome;
     private javax.swing.JTextField textFieldName;
     // End of variables declaration//GEN-END:variables
+
+    private void clean() {
+        comboBoxCategory.setSelectedIndex(-1);
+        textFieldName.setText("");
+    }
 }

@@ -13,4 +13,8 @@ public class PatrimonioController {
         return PatrimonioDao.insert(patrimonio);
     }
 
+    public static Patrimonio searchById(int id) {
+        return PatrimonioDao.searchById(id);
+    }
+
 }

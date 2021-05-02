@@ -2,22 +2,23 @@ package com.mecindustries.meckstock.view;
 
 import com.mecindustries.meckstock.model.Usuario;
 import com.mecindustries.meckstock.view.produto.CadastrarProdutoFrame;
+import com.mecindustries.meckstock.view.produto.PesquisarProdutoFrame;
 
 /**
  *
  * @author Fael
  */
 public class PrincipalFrame extends javax.swing.JFrame {
-    
+
     public PrincipalFrame() {
         initComponents();
     }
-    
+
     public PrincipalFrame(Usuario usuario) {
         initComponents();
         labelBemVindo.setText("Bem vindo, " + usuario.getNome());
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -27,7 +28,6 @@ public class PrincipalFrame extends javax.swing.JFrame {
         menuBar = new javax.swing.JMenuBar();
         menuProduto = new javax.swing.JMenu();
         menuItemCreateProduto = new javax.swing.JMenuItem();
-        menuItemCreateProdutoCategoria = new javax.swing.JMenuItem();
         menuItemReadProduto = new javax.swing.JMenuItem();
         menuItemUpdateProduto = new javax.swing.JMenuItem();
         menuItemDeleteProduto = new javax.swing.JMenuItem();
@@ -41,12 +41,16 @@ public class PrincipalFrame extends javax.swing.JFrame {
         menuItemReadMovimentacao = new javax.swing.JMenuItem();
         menuItemUpdateMovimentacao = new javax.swing.JMenuItem();
         menuItemDeleteMovimentacao = new javax.swing.JMenuItem();
+        menuCategoria = new javax.swing.JMenu();
+        menuItemCreateCategoria = new javax.swing.JMenuItem();
+        menuItemReadCategoria = new javax.swing.JMenuItem();
+        menuItemDeleteCategoria = new javax.swing.JMenuItem();
+        menuItemUpdateCategoria = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Home");
         setMinimumSize(new java.awt.Dimension(800, 600));
         setName("principalFrame"); // NOI18N
-        setPreferredSize(new java.awt.Dimension(1280, 720));
 
         labelLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/LogoMeckStock.png"))); // NOI18N
@@ -59,19 +63,21 @@ public class PrincipalFrame extends javax.swing.JFrame {
         menuBar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
         menuProduto.setText("Produto");
-        menuProduto.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                menuProdutoMouseClicked(evt);
-            }
-        });
 
         menuItemCreateProduto.setText("Cadastrar");
+        menuItemCreateProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemCreateProdutoActionPerformed(evt);
+            }
+        });
         menuProduto.add(menuItemCreateProduto);
 
-        menuItemCreateProdutoCategoria.setText("Cadastrar Categoria");
-        menuProduto.add(menuItemCreateProdutoCategoria);
-
         menuItemReadProduto.setText("Pesquisar");
+        menuItemReadProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemReadProdutoActionPerformed(evt);
+            }
+        });
         menuProduto.add(menuItemReadProduto);
 
         menuItemUpdateProduto.setText("Atualizar");
@@ -114,6 +120,22 @@ public class PrincipalFrame extends javax.swing.JFrame {
 
         menuBar.add(menuMovimentacao);
 
+        menuCategoria.setText("Categoria");
+
+        menuItemCreateCategoria.setText("Cadastrar");
+        menuCategoria.add(menuItemCreateCategoria);
+
+        menuItemReadCategoria.setText("Pesquisar");
+        menuCategoria.add(menuItemReadCategoria);
+
+        menuItemDeleteCategoria.setText("Deletar");
+        menuCategoria.add(menuItemDeleteCategoria);
+
+        menuItemUpdateCategoria.setText("Atualizar");
+        menuCategoria.add(menuItemUpdateCategoria);
+
+        menuBar.add(menuCategoria);
+
         setJMenuBar(menuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -121,30 +143,34 @@ public class PrincipalFrame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(504, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelBemVindo))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(labelBemVindo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(labelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(504, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(214, Short.MAX_VALUE)
-                .addComponent(labelBemVindo)
+                .addContainerGap(197, Short.MAX_VALUE)
+                .addComponent(labelBemVindo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(labelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(254, Short.MAX_VALUE))
+                .addContainerGap(271, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void menuProdutoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuProdutoMouseClicked
+    private void menuItemCreateProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemCreateProdutoActionPerformed
         new CadastrarProdutoFrame().setVisible(true);
-    }//GEN-LAST:event_menuProdutoMouseClicked
-    
+    }//GEN-LAST:event_menuItemCreateProdutoActionPerformed
+
+    private void menuItemReadProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemReadProdutoActionPerformed
+        new PesquisarProdutoFrame().setVisible(true);
+    }//GEN-LAST:event_menuItemReadProdutoActionPerformed
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
             new PrincipalFrame().setVisible(true);
@@ -155,16 +181,20 @@ public class PrincipalFrame extends javax.swing.JFrame {
     private javax.swing.JLabel labelBemVindo;
     private javax.swing.JLabel labelLogo;
     private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenu menuCategoria;
+    private javax.swing.JMenuItem menuItemCreateCategoria;
     private javax.swing.JMenuItem menuItemCreateMovimentacao;
     private javax.swing.JMenuItem menuItemCreateProduto;
-    private javax.swing.JMenuItem menuItemCreateProdutoCategoria;
     private javax.swing.JMenuItem menuItemCreateSetor;
+    private javax.swing.JMenuItem menuItemDeleteCategoria;
     private javax.swing.JMenuItem menuItemDeleteMovimentacao;
     private javax.swing.JMenuItem menuItemDeleteProduto;
     private javax.swing.JMenuItem menuItemDeleteSetor;
+    private javax.swing.JMenuItem menuItemReadCategoria;
     private javax.swing.JMenuItem menuItemReadMovimentacao;
     private javax.swing.JMenuItem menuItemReadProduto;
     private javax.swing.JMenuItem menuItemReadSetor;
+    private javax.swing.JMenuItem menuItemUpdateCategoria;
     private javax.swing.JMenuItem menuItemUpdateMovimentacao;
     private javax.swing.JMenuItem menuItemUpdateProduto;
     private javax.swing.JMenuItem menuItemUpdateSetor;
