@@ -21,4 +21,8 @@ public class PatrimonioController {
         return PatrimonioDao.Update(patrimnonioToEdit);
     }
 
+    public static boolean delete(int id) {
+        return PatrimonioDao.Delete(id);
+    }
+
 }
