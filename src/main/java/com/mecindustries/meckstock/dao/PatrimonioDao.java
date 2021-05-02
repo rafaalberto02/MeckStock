@@ -16,14 +16,13 @@ public class PatrimonioDao {
     public static boolean insert(Patrimonio patrimonio) {
         Connection connection = ConnectionFactory.getConnection();
 
-        String sqlQuery = "INSERT INTO PATRIMONIO (NOME, ID_CATEGORIA, QUANTIDADE) "
-                + "VALUES(?, ?, ?)";
+        String sqlQuery = "INSERT INTO PATRIMONIO (NOME, ID_CATEGORIA) "
+                + "VALUES(?, ?)";
 
         try (PreparedStatement stmt = connection.prepareStatement(sqlQuery)) {
 
             stmt.setString(1, patrimonio.getNome());
             stmt.setInt(2, patrimonio.getIdCategoria());
-            stmt.setDouble(3, patrimonio.getQuantidade());
 
             stmt.execute();
 
@@ -42,13 +41,12 @@ public class PatrimonioDao {
         Patrimonio patrimonioToReturn = null;
         Connection connection = ConnectionFactory.getConnection();
 
-        String sqlQuery = "SELECT * FROM PATRIMONIO WHERE ID = ?";
+        String sqlQuery = "SELECT P.*, (SELECT COUNT(ID) FROM ITEM WHERE ID_PATRIMONIO = P.ID) AS QUANTIDADE FROM PATRIMONIO P WHERE ID = ?";
 
         try (PreparedStatement stmt = connection.prepareStatement(sqlQuery)) {
             stmt.setInt(1, id);
 
             ResultSet rs = stmt.executeQuery();
-            System.out.println(id);
 
             if (rs.next()) {
                 patrimonioToReturn = createPatrimonioObjectByResultSet(rs);
@@ -66,14 +64,13 @@ public class PatrimonioDao {
         Connection connection = ConnectionFactory.getConnection();
 
         String sqlQuery = "UPDATE PATRIMONIO SET "
-                + "ID_CATEGORIA = ?, NOME = ?, QUANTIDADE = ? "
+                + "ID_CATEGORIA = ?, NOME = ? "
                 + "WHERE ID = ?";
 
         try (PreparedStatement stmt = connection.prepareStatement(sqlQuery)) {
 
             stmt.setInt(1, patrimonio.getIdCategoria());
             stmt.setString(2, patrimonio.getNome());
-            stmt.setDouble(3, patrimonio.getQuantidade());
 
             stmt.execute();
 
