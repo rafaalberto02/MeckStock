@@ -4,6 +4,7 @@
 ### Java ###
 # Compiled class file
 *.class
+*TemplateTela*
 
 # Log file
 *.log
