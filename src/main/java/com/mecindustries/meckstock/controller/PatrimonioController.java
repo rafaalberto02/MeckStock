@@ -2,6 +2,7 @@ package com.mecindustries.meckstock.controller;
 
 import com.mecindustries.meckstock.dao.PatrimonioDao;
 import com.mecindustries.meckstock.model.Patrimonio;
+import java.util.List;
 
 /**
  *
@@ -23,6 +24,10 @@ public class PatrimonioController {
 
     public static boolean delete(int id) {
         return PatrimonioDao.Delete(id);
+    }
+
+    public static List<Patrimonio> getAll() {
+        return PatrimonioDao.getAll();
     }
 
 }

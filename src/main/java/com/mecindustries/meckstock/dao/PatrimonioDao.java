@@ -6,6 +6,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -104,6 +106,27 @@ public class PatrimonioDao {
             return false;
         }
 
+    }
+
+    public static List<Patrimonio> getAll() {
+        List<Patrimonio> patrimonios = new ArrayList();
+        Connection connection = ConnectionFactory.getConnection();
+
+        String sqlQuery = "SELECT P.*, (SELECT COUNT(ID) FROM ITEM WHERE ID_PATRIMONIO = P.ID) AS QUANTIDADE FROM PATRIMONIO P";
+
+        try (PreparedStatement stmt = connection.prepareStatement(sqlQuery)) {
+
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                patrimonios.add(createPatrimonioObjectByResultSet(rs));
+            }
+
+        } catch (SQLException e) {
+            System.err.println(e);
+        } finally {
+            return patrimonios;
+        }
     }
 
     private static Patrimonio createPatrimonioObjectByResultSet(ResultSet rs) throws SQLException {

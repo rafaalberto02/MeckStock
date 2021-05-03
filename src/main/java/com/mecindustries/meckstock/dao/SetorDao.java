@@ -104,6 +104,25 @@ public class SetorDao {
 
     }
 
+    public static int getLastInsertedId() {
+        Connection connection = ConnectionFactory.getConnection();
+
+        String sqlQuery = "SELECT MAX(ID) AS LAST FROM SETOR";
+
+        try (PreparedStatement stmt = connection.prepareStatement(sqlQuery)) {
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                return rs.getInt("LAST");
+            }
+
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
+
+        return -1;
+    }
+
     private static Setor createSetorObjectByResultSet(ResultSet rs) throws SQLException {
         return new Setor(rs.getInt("ID"), rs.getString("NOME"));
     }

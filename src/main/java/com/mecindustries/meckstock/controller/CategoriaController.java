@@ -18,4 +18,8 @@ public class CategoriaController {
         return CategoriaDao.getAll();
     }
 
+    public static Categoria searchById(int id) {
+        return CategoriaDao.searchById(id);
+    }
+
 }
