@@ -303,12 +303,6 @@ public class RealizarMovimentacaoFrame extends javax.swing.JFrame {
         MovimentacaoController.create(movimentacao);
     }//GEN-LAST:event_buttonRealizarMovimentacaoActionPerformed
 
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(() -> {
-            new RealizarMovimentacaoFrame(null).setVisible(true);
-        });
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonPesquisar;
     private javax.swing.JButton buttonRealizarMovimentacao;

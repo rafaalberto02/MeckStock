@@ -142,11 +142,6 @@ public class CadastrarCategoriaFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_buttonCreateMouseClicked
 
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(() -> {
-            new CadastrarCategoriaFrame().setVisible(true);
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonCreate;

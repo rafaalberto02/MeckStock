@@ -152,11 +152,6 @@ public class PesquisarSetorFrame extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_buttonVoltarActionPerformed
 
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(() -> {
-            new PesquisarSetorFrame().setVisible(true);
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonVoltar;

@@ -268,12 +268,6 @@ public class AtualizarItemFrame extends javax.swing.JFrame {
         patchValues();
     }//GEN-LAST:event_buttonPesquisarActionPerformed
 
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(() -> {
-            new AtualizarItemFrame().setVisible(true);
-        });
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonPesquisar;
     private javax.swing.JButton buttonSalvar;

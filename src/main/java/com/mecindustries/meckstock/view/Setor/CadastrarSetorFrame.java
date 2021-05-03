@@ -287,12 +287,6 @@ public class CadastrarSetorFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_buttonCriarActionPerformed
 
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(() -> {
-            new CadastrarSetorFrame().setVisible(true);
-        });
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAdicionar;
     private javax.swing.JButton buttonCriar;

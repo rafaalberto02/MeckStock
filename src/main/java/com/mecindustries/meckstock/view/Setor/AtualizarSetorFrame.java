@@ -213,11 +213,6 @@ public class AtualizarSetorFrame extends javax.swing.JFrame {
         searchItens();
     }//GEN-LAST:event_formWindowGainedFocus
 
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(() -> {
-            new AtualizarSetorFrame().setVisible(true);
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonEditarItem;

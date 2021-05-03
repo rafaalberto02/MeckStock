@@ -176,11 +176,6 @@ public class ListarMovimentacaoFrame extends javax.swing.JFrame {
         listar();
     }//GEN-LAST:event_buttonDevolverActionPerformed
 
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(() -> {
-            new ListarMovimentacaoFrame().setVisible(true);
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonDevolver;

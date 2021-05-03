@@ -16,19 +16,19 @@ import javax.swing.JFrame;
  * @author Fael
  */
 public class PrincipalFrame extends javax.swing.JFrame {
-    
+
     private Usuario usuario;
-    
+
     public PrincipalFrame() {
         initComponents();
     }
-    
+
     public PrincipalFrame(Usuario usuario) {
         initComponents();
         labelBemVindo.setText("Bem vindo, " + usuario.getNome());
         this.usuario = usuario;
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -228,12 +228,7 @@ public class PrincipalFrame extends javax.swing.JFrame {
     private void menuItemUpdateMovimentacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemUpdateMovimentacaoActionPerformed
         new ListarMovimentacaoFrame().setVisible(true);
     }//GEN-LAST:event_menuItemUpdateMovimentacaoActionPerformed
-    
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(() -> {
-            new PrincipalFrame().setVisible(true);
-        });
-    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel labelBemVindo;
