@@ -18,4 +18,12 @@ public class ItemController {
         return ItemDao.searchBySetor(id);
     }
 
+    public static Item getById(int id) {
+        return ItemDao.searchById(id);
+    }
+
+    public static boolean update(Item item) {
+        return ItemDao.Update(item);
+    }
+
 }

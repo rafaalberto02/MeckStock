@@ -18,7 +18,7 @@ public class HistoricoMovimentacaoDao {
         Connection connection = ConnectionFactory.getConnection();
 
         String sqlQuery = "INSERT INTO HISTORICO_MOVIMENTACAO (ID_USUARIO, ID_SETOR, ID_ITEM, DATA_RETIRADA) "
-                + "VALUES(?, ?, ?, now(), ?)";
+                + "VALUES(?, ?, ?, now())";
 
         try (PreparedStatement stmt = connection.prepareStatement(sqlQuery)) {
 
@@ -108,6 +108,28 @@ public class HistoricoMovimentacaoDao {
             System.err.println(e);
             return false;
         }
+
+    }
+
+    public static boolean hasOpenMove(int idItem) {
+        HistoricoMovimentacao historicoToReturn = null;
+        Connection connection = ConnectionFactory.getConnection();
+
+        String sqlQuery = "SELECT * FROM HISTORICO_MOVIMENTACAO WHERE ID_ITEM = ? AND DATA_DEVOLUCAO IS NULL";
+
+        try (PreparedStatement stmt = connection.prepareStatement(sqlQuery)) {
+            stmt.setInt(1, idItem);
+
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                return true;
+            }
+
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
+        return false;
 
     }
 
