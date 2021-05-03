@@ -2,6 +2,7 @@ package com.mecindustries.meckstock.view;
 
 import com.mecindustries.meckstock.model.Usuario;
 import com.mecindustries.meckstock.view.Setor.CadastrarSetorFrame;
+import com.mecindustries.meckstock.view.Setor.PesquisarSetorFrame;
 import com.mecindustries.meckstock.view.produto.AtualizarProdutoFrame;
 import com.mecindustries.meckstock.view.produto.CadastrarProdutoFrame;
 import com.mecindustries.meckstock.view.produto.PesquisarProdutoFrame;
@@ -106,6 +107,11 @@ public class PrincipalFrame extends javax.swing.JFrame {
         menuSetor.add(menuItemCreateSetor);
 
         menuItemReadSetor.setText("Pesquisar");
+        menuItemReadSetor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemReadSetorActionPerformed(evt);
+            }
+        });
         menuSetor.add(menuItemReadSetor);
 
         menuItemUpdateSetor.setText("Atualizar");
@@ -186,6 +192,10 @@ public class PrincipalFrame extends javax.swing.JFrame {
     private void menuItemUpdateProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemUpdateProdutoActionPerformed
         new AtualizarProdutoFrame().setVisible(true);
     }//GEN-LAST:event_menuItemUpdateProdutoActionPerformed
+
+    private void menuItemReadSetorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemReadSetorActionPerformed
+        new PesquisarSetorFrame().setVisible(true);
+    }//GEN-LAST:event_menuItemReadSetorActionPerformed
 
     private void menuItemCreateSetorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemCreateSetorActionPerformed
         new CadastrarSetorFrame().setVisible(true);

@@ -7,6 +7,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -58,6 +60,29 @@ public class ItemDao {
             System.err.println(e);
         } finally {
             return itemToReturn;
+        }
+
+    }
+
+    public static List<Item> searchBySetor(int id) {
+        List<Item> itens = new ArrayList();
+        Connection connection = ConnectionFactory.getConnection();
+
+        String sqlQuery = "SELECT * FROM ITEM WHERE ID_SETOR = ?";
+
+        try (PreparedStatement stmt = connection.prepareStatement(sqlQuery)) {
+            stmt.setInt(1, id);
+
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                itens.add(createItemObjectByResultSet(rs));
+            }
+
+        } catch (SQLException e) {
+            System.err.println(e);
+        } finally {
+            return itens;
         }
 
     }

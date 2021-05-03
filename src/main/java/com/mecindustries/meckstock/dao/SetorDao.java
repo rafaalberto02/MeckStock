@@ -6,6 +6,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -121,6 +123,27 @@ public class SetorDao {
         }
 
         return -1;
+    }
+
+    public static List<Setor> getAll() {
+        List<Setor> setores = new ArrayList();
+        Connection connection = ConnectionFactory.getConnection();
+
+        String sqlQuery = "SELECT * FROM SETOR";
+
+        try (PreparedStatement stmt = connection.prepareStatement(sqlQuery)) {
+
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                setores.add(createSetorObjectByResultSet(rs));
+            }
+
+        } catch (SQLException e) {
+            System.err.println(e);
+        } finally {
+            return setores;
+        }
     }
 
     private static Setor createSetorObjectByResultSet(ResultSet rs) throws SQLException {

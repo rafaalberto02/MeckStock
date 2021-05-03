@@ -2,6 +2,7 @@ package com.mecindustries.meckstock.controller;
 
 import com.mecindustries.meckstock.dao.SetorDao;
 import com.mecindustries.meckstock.model.Setor;
+import java.util.List;
 
 /**
  *
@@ -15,6 +16,10 @@ public class SetorController {
 
     public static int getLastInsertedId() {
         return SetorDao.getLastInsertedId();
+    }
+
+    public static List<Setor> getAll() {
+        return SetorDao.getAll();
     }
 
 }
