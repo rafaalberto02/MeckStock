@@ -4,6 +4,8 @@ import com.mecindustries.meckstock.model.Usuario;
 import com.mecindustries.meckstock.view.Setor.AtualizarSetorFrame;
 import com.mecindustries.meckstock.view.Setor.CadastrarSetorFrame;
 import com.mecindustries.meckstock.view.Setor.PesquisarSetorFrame;
+import com.mecindustries.meckstock.view.movimentacao.ListarMovimentacaoFrame;
+import com.mecindustries.meckstock.view.movimentacao.RealizarMovimentacaoFrame;
 import com.mecindustries.meckstock.view.produto.AtualizarProdutoFrame;
 import com.mecindustries.meckstock.view.produto.CadastrarProdutoFrame;
 import com.mecindustries.meckstock.view.produto.PesquisarProdutoFrame;
@@ -14,19 +16,19 @@ import javax.swing.JFrame;
  * @author Fael
  */
 public class PrincipalFrame extends javax.swing.JFrame {
-
+    
     private Usuario usuario;
-
+    
     public PrincipalFrame() {
         initComponents();
     }
-
+    
     public PrincipalFrame(Usuario usuario) {
         initComponents();
         labelBemVindo.setText("Bem vindo, " + usuario.getNome());
         this.usuario = usuario;
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -46,9 +48,7 @@ public class PrincipalFrame extends javax.swing.JFrame {
         menuItemDeleteSetor = new javax.swing.JMenuItem();
         menuMovimentacao = new javax.swing.JMenu();
         menuItemCreateMovimentacao = new javax.swing.JMenuItem();
-        menuItemReadMovimentacao = new javax.swing.JMenuItem();
         menuItemUpdateMovimentacao = new javax.swing.JMenuItem();
-        menuItemDeleteMovimentacao = new javax.swing.JMenuItem();
         menuCategoria = new javax.swing.JMenu();
         menuItemCreateCategoria = new javax.swing.JMenuItem();
         menuItemReadCategoria = new javax.swing.JMenuItem();
@@ -135,16 +135,20 @@ public class PrincipalFrame extends javax.swing.JFrame {
         menuMovimentacao.setText("Movimentação");
 
         menuItemCreateMovimentacao.setText("Cadastrar");
+        menuItemCreateMovimentacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemCreateMovimentacaoActionPerformed(evt);
+            }
+        });
         menuMovimentacao.add(menuItemCreateMovimentacao);
 
-        menuItemReadMovimentacao.setText("Pesquisar");
-        menuMovimentacao.add(menuItemReadMovimentacao);
-
-        menuItemUpdateMovimentacao.setText("Atualizar");
+        menuItemUpdateMovimentacao.setText("Listar");
+        menuItemUpdateMovimentacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemUpdateMovimentacaoActionPerformed(evt);
+            }
+        });
         menuMovimentacao.add(menuItemUpdateMovimentacao);
-
-        menuItemDeleteMovimentacao.setText("Deletar");
-        menuMovimentacao.add(menuItemDeleteMovimentacao);
 
         menuBar.add(menuMovimentacao);
 
@@ -216,6 +220,15 @@ public class PrincipalFrame extends javax.swing.JFrame {
         frame.setVisible(true);
     }//GEN-LAST:event_menuItemUpdateSetorActionPerformed
 
+    private void menuItemCreateMovimentacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemCreateMovimentacaoActionPerformed
+        JFrame frame = new RealizarMovimentacaoFrame(this.usuario);
+        frame.setVisible(true);
+    }//GEN-LAST:event_menuItemCreateMovimentacaoActionPerformed
+
+    private void menuItemUpdateMovimentacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemUpdateMovimentacaoActionPerformed
+        new ListarMovimentacaoFrame().setVisible(true);
+    }//GEN-LAST:event_menuItemUpdateMovimentacaoActionPerformed
+    
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
             new PrincipalFrame().setVisible(true);
@@ -232,11 +245,9 @@ public class PrincipalFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuItemCreateProduto;
     private javax.swing.JMenuItem menuItemCreateSetor;
     private javax.swing.JMenuItem menuItemDeleteCategoria;
-    private javax.swing.JMenuItem menuItemDeleteMovimentacao;
     private javax.swing.JMenuItem menuItemDeleteProduto;
     private javax.swing.JMenuItem menuItemDeleteSetor;
     private javax.swing.JMenuItem menuItemReadCategoria;
-    private javax.swing.JMenuItem menuItemReadMovimentacao;
     private javax.swing.JMenuItem menuItemReadProduto;
     private javax.swing.JMenuItem menuItemReadSetor;
     private javax.swing.JMenuItem menuItemUpdateCategoria;

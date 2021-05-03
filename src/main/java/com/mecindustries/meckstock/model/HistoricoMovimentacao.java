@@ -32,6 +32,13 @@ public class HistoricoMovimentacao {
         this.dataDevolucao = dataDevolucao;
     }
 
+    public HistoricoMovimentacao(int id, int idUsuario, int idSetor, int idItem) {
+        this.id = id;
+        this.idUsuario = idUsuario;
+        this.idSetor = idSetor;
+        this.idItem = idItem;
+    }
+
     public HistoricoMovimentacao(int idUsuario, int idSetor, int idItem) {
         this.idUsuario = idUsuario;
         this.idSetor = idSetor;

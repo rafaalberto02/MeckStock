@@ -7,6 +7,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -111,8 +114,29 @@ public class HistoricoMovimentacaoDao {
 
     }
 
+    public static boolean devolver(int id) {
+        Connection connection = ConnectionFactory.getConnection();
+
+        String sqlQuery = "UPDATE HISTORICO_MOVIMENTACAO SET "
+                + "DATA_DEVOLUCAO = now() "
+                + "WHERE ID = ?";
+
+        try (PreparedStatement stmt = connection.prepareStatement(sqlQuery)) {
+
+            stmt.setInt(1, id);
+            stmt.execute();
+
+            connection.close();
+            stmt.close();
+
+            return true;
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+            return false;
+        }
+    }
+
     public static boolean hasOpenMove(int idItem) {
-        HistoricoMovimentacao historicoToReturn = null;
         Connection connection = ConnectionFactory.getConnection();
 
         String sqlQuery = "SELECT * FROM HISTORICO_MOVIMENTACAO WHERE ID_ITEM = ? AND DATA_DEVOLUCAO IS NULL";
@@ -130,16 +154,63 @@ public class HistoricoMovimentacaoDao {
             System.err.println(e);
         }
         return false;
+    }
 
+    public static List<HistoricoMovimentacao> getOpen() {
+        List<HistoricoMovimentacao> movimentacoes = new ArrayList();
+        Connection connection = ConnectionFactory.getConnection();
+
+        String sqlQuery = "SELECT * FROM HISTORICO_MOVIMENTACAO WHERE DATA_DEVOLUCAO IS NULL";
+
+        try (PreparedStatement stmt = connection.prepareStatement(sqlQuery)) {
+
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                movimentacoes.add(createHistoricoMovimentacaoObjectByResultSet(rs));
+            }
+
+            return movimentacoes;
+
+        } catch (SQLException e) {
+            System.err.println(e);
+        } finally {
+            return movimentacoes;
+        }
+    }
+
+    public static List<HistoricoMovimentacao> getClosed() {
+        List<HistoricoMovimentacao> movimentacoes = new ArrayList();
+        Connection connection = ConnectionFactory.getConnection();
+
+        String sqlQuery = "SELECT * FROM HISTORICO_MOVIMENTACAO WHERE DATA_DEVOLUCAO IS NOT NULL";
+
+        try (PreparedStatement stmt = connection.prepareStatement(sqlQuery)) {
+
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                System.out.println(createHistoricoMovimentacaoObjectByResultSet(rs));
+                movimentacoes.add(createHistoricoMovimentacaoObjectByResultSet(rs));
+            }
+
+            return movimentacoes;
+
+        } catch (SQLException e) {
+            System.err.println(e);
+        } finally {
+            return movimentacoes;
+        }
     }
 
     private static HistoricoMovimentacao createHistoricoMovimentacaoObjectByResultSet(ResultSet rs) throws SQLException {
+        System.out.println("cc");
         return new HistoricoMovimentacao(rs.getInt("ID"),
                 rs.getInt("ID_USUARIO"),
                 rs.getInt("ID_SETOR"),
                 rs.getInt("ID_ITEM"),
-                rs.getTimestamp("DATA_RETIRADA").toLocalDateTime(),
-                rs.getTimestamp("DATA_DEVOLUCAO").toLocalDateTime()
+                rs.getObject("DATA_RETIRADA", LocalDateTime.class),
+                rs.getObject("DATA_DEVOLUCAO", LocalDateTime.class)
         );
     }
 

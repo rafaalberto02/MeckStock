@@ -22,4 +22,7 @@ public class SetorController {
         return SetorDao.getAll();
     }
 
+    public static Setor searchById(int id){
+        return SetorDao.searchById(id);
+    }
 }
